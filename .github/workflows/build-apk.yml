@@ -24,21 +24,27 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Install SDK packages
+      # GitHub-hosted runners ship with the Android SDK preinstalled.
+      # We only add the platform / build-tools this project needs, which avoids
+      # the broken `tools` package lookup in android-actions/setup-android@v3.
+      - name: Install Android SDK packages
         run: |
-          yes | sdkmanager --licenses > /dev/null || true
-          sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools"
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x ./gradlew
+          ANDROID_HOME="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          echo "ANDROID_HOME=$ANDROID_HOME" >> "$GITHUB_ENV"
+          SDKMANAGER="$(ls -1 "$ANDROID_HOME"/cmdline-tools/*/bin/sdkmanager | tail -1)"
+          echo "Using $SDKMANAGER"
+          yes | "$SDKMANAGER" --licenses > /dev/null || true
+          "$SDKMANAGER" "platforms;android-35" "build-tools;35.0.0" "platform-tools"
 
       - name: Build debug APK
-        run: ./gradlew :app:assembleDebug --stacktrace
+        run: |
+          chmod +x ./gradlew
+          ./gradlew :app:assembleDebug --stacktrace
 
-      - name: Build release APK (unsigned when no keystore is present)
+      # No signing key is committed: this produces an unsigned release APK,
+      # while a locally generated keystore (tools/gen-keystore.sh) yields a
+      # signed one. Signed builds are attached to GitHub Releases.
+      - name: Build release APK
         run: ./gradlew :app:assembleRelease --stacktrace
 
       - name: Upload APKs
