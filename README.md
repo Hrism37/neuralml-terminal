@@ -1,5 +1,10 @@
 # NeuralML Terminal
 
+[![Build APK](https://github.com/Hrism37/neuralml-terminal/actions/workflows/build-apk.yml/badge.svg)](https://github.com/Hrism37/neuralml-terminal/actions/workflows/build-apk.yml)
+[![Release](https://img.shields.io/github/v/release/Hrism37/neuralml-terminal)](https://github.com/Hrism37/neuralml-terminal/releases)
+
+仓库：<https://github.com/Hrism37/neuralml-terminal> · 已签名 APK 见 **Releases** 页。
+
 纯原生 Android（Kotlin）「ML 脑控终端」仪表盘，单 Activity、纯黑荧光赛博风格。
 **完全本地运行**：没有网络权限、不采集任何数据、没有任何真实模型或外部服务，
 所有数值 / 波形 / 日志 / 指令反馈都由本地代码实时生成，用于个人娱乐与视觉展示。
