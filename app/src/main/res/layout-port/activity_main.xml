@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Portrait fallback layout. The activity is sensorLandscape by default, but if
+  the device reports a portrait configuration (e.g. OEM splitscreen policy)
+  this stacked variant keeps every panel readable on tablet screens.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/neural_black">
+
+    <com.neuralml.terminal.ui.CodeRainView
+        android:id="@+id/codeRain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <com.neuralml.terminal.ui.TopStatusBarView
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="34"
+            android:layout_marginTop="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.neuralml.terminal.ui.WaveformView
+                    android:id="@+id/waveformView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="60" />
+
+                <com.neuralml.terminal.ui.BrainWireframeView
+                    android:id="@+id/brainView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="40"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <com.neuralml.terminal.ui.SyncMeterView
+                android:id="@+id/syncMeter"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_gravity="bottom"
+                android:layout_margin="10dp" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="20"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <com.neuralml.terminal.ui.BiometricsPanelView
+                android:id="@+id/biometricsPanel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <com.neuralml.terminal.ui.EngineStatusPanelView
+                android:id="@+id/enginePanel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <com.neuralml.terminal.ui.ConsoleView
+            android:id="@+id/consoleView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="24"
+            android:layout_marginTop="4dp" />
+
+        <com.neuralml.terminal.ui.LogPanelView
+            android:id="@+id/logPanel"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="14"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+
+    <com.neuralml.terminal.ui.CrtOverlayView
+        android:id="@+id/crtOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.neuralml.terminal.ui.BootOverlayView
+        android:id="@+id/bootOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>

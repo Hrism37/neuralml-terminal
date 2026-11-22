@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Core palette: pure black + fluorescent cyan / green / amber / red. -->
+    <color name="neural_black">#FF000000</color>
+    <color name="neural_cyan">#FF00FFFF</color>
+    <color name="neural_green">#FF00FF00</color>
+    <color name="neural_amber">#FFFFCC00</color>
+    <color name="neural_red">#FFFF3333</color>
+    <color name="neural_dim">#FF3A6E6E</color>
+    <color name="neural_text">#FFB8F5F5</color>
+    <color name="neural_grey">#FF8A9A9A</color>
+    <color name="ic_launcher_background">#FF000000</color>
+</resources>

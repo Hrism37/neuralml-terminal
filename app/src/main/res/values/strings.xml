@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NeuralML Terminal</string>
+    <string name="console_prompt">neural-ml@decoder:~$</string>
+    <string name="console_hint">输入指令…</string>
+</resources>

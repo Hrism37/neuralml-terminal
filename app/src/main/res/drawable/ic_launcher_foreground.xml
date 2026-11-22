@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Minimal neural-node glyph: cyan wireframe brain inside a terminal frame. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:strokeColor="#00FFFF"
+        android:strokeWidth="2"
+        android:fillColor="#00000000"
+        android:pathData="M54,30 C42,30 34,38 34,48 C28,50 26,58 30,64 C28,71 34,78 44,78 C48,84 60,84 64,78 C74,78 80,71 78,64 C82,58 80,50 74,48 C74,38 66,30 54,30 Z" />
+    <path
+        android:strokeColor="#00FF00"
+        android:strokeWidth="1.5"
+        android:fillColor="#00000000"
+        android:pathData="M54,30 L54,78 M40,42 L54,52 L68,42 M36,60 L54,52 L72,60" />
+    <path
+        android:fillColor="#00FFFF"
+        android:pathData="M54,50 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0" />
+</vector>

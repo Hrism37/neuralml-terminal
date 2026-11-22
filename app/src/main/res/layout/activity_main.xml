@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Landscape (default) terminal layout for 12" tablets (Honor Pad Z Pro class).
+
+  Width split: left panels 28% · center visualization 44% · console 28%.
+  Height split: status bar 8% · work area 77% · log bar 15%.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/neural_black">
+
+    <!-- Background digital code rain (very low opacity). -->
+    <com.neuralml.terminal.ui.CodeRainView
+        android:id="@+id/codeRain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <com.neuralml.terminal.ui.TopStatusBarView
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="77"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <!-- Left: biometrics + ML engine status (28% width). -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="28"
+                android:orientation="vertical">
+
+                <com.neuralml.terminal.ui.BiometricsPanelView
+                    android:id="@+id/biometricsPanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <com.neuralml.terminal.ui.EngineStatusPanelView
+                    android:id="@+id/enginePanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <!-- Center: waveform + wireframe brain + sync meters (44% width). -->
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="44"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.neuralml.terminal.ui.WaveformView
+                        android:id="@+id/waveformView"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="58" />
+
+                    <com.neuralml.terminal.ui.BrainWireframeView
+                        android:id="@+id/brainView"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="42"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <!-- Dual progress bars overlaid on the visualization. -->
+                <com.neuralml.terminal.ui.SyncMeterView
+                    android:id="@+id/syncMeter"
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="12dp" />
+            </FrameLayout>
+
+            <!-- Right: interactive command console (28% width). -->
+            <com.neuralml.terminal.ui.ConsoleView
+                android:id="@+id/consoleView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="28" />
+        </LinearLayout>
+
+        <com.neuralml.terminal.ui.LogPanelView
+            android:id="@+id/logPanel"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="15"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+
+    <!-- CRT scanlines / flicker overlay, never consumes touches. -->
+    <com.neuralml.terminal.ui.CrtOverlayView
+        android:id="@+id/crtOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Boot self-test overlay, removed after ~3 s. -->
+    <com.neuralml.terminal.ui.BootOverlayView
+        android:id="@+id/bootOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>
